@@ -2,13 +2,13 @@
 
 body {
     /* Color Scheme */
-    --primary-background-color: #f7f7f7;
+    --primary-background-color: #d3dadc;
     --secondary-background-color: #646cff;
     --text-color: #191a1a;
-    --button-background-color: #ffffff;
-    --button-hover-background-color: #ffffff;
+    --button-background-color: #d6c9b4;
+    --button-hover-background-color: #e8e2da;
     --button-hover-text-color: #191a1a;
-    --link-color: #646cff;
+    --link-color: #455763;
     --link-hover-color: var(--text-color);
 
     /* Font */
