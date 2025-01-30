@@ -1,12 +1,12 @@
 .profile-card {
-    background-color: #ededed;
+    background-color: var(--primary-background-color);
     border-radius: var(--border-radius);
     padding: 1rem;
     text-align: center;
     width: 200px;
     box-shadow: var(--box-shadow);
     height: 100%;
-    margin: 0 1rem;
+    margin: 0.75rem;
 }
 
 .profile-card_img {
@@ -25,4 +25,13 @@ img {
     top: 0;
     left: 0;
     object-fit: cover;
+}
+
+h3 {
+    margin: 0.5rem 0;
+}
+
+p {
+    margin: 0;
+    color: var(--text-color);
 }

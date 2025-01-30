@@ -2,10 +2,12 @@
 
 body {
     /* Color Scheme */
-    --primary-background-color: #d3dadc;
-    --secondary-background-color: #646cff;
-    --text-color: #191a1a;
+    --primary-background-color: #e8e2da;
+    --secondary-background-color: #455763;
+    --third-background-color: #d3dadc;
+    --text-color: #455763;
     --button-background-color: #d6c9b4;
+    --button-text-color: #ffffff;
     --button-hover-background-color: #e8e2da;
     --button-hover-text-color: #191a1a;
     --link-color: #455763;
@@ -23,5 +25,5 @@ body {
     --border-color: #e0e0e0;
 
     /* Shadow */
-    --box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    --box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }

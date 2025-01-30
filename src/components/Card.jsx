@@ -13,8 +13,9 @@ const Card = ({img, name, title, email}) => {
                 <p><a href={`mailto:${email}`}>{email}</a></p>
             </div>
         </div>
-    )
+    );
 }
+
 Card.propTypes = {
     img: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,

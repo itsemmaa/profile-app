@@ -2,7 +2,7 @@
 
 body {
     font-family: var(--font-family);
-    background-color: var(--primary-background-color);
+    background-color: var(--third-background-color);
     color: var(--text-color);
     font-size: 1rem;
     margin: 0;
@@ -44,6 +44,8 @@ h6 {
 p {
     font-size: 1.125rem;
     color: var(--text-color);
+    margin-bottom: 1.25rem;
+    text-align: center;
 }
 
 a {
@@ -71,10 +73,11 @@ li {
 
 .section {
     width: 100%;
+    padding: 2.75rem;
 }
 
 .section + .section {
-    margin-top: 4rem;
+    margin-top: -4rem;
 }
 
 .container {
@@ -89,7 +92,42 @@ li {
 
 .profile-cards {
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
+    margin: -0.75rem;
+    align-content: center;
+}
+
+.button {
+    background-color: var(--button-background-color);
+    color: var(--button-text-color);
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.button:hover {
+    background-color: var(--button-hover-background-color);
+    color: var(--button-hover-text-color);
+}
+
+.filter-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+.filter--search, .filter--select, button {
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+select, input {
+    padding: 0.2rem;
+    font-size: 1rem;
+    background-color: #e8e2da;
+    border-color: #d6c9b4;
+    color: #455763;
 }
 
 /* Tablet Styles */
