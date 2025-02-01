@@ -6,6 +6,8 @@ import Card from "./components/Card";
 import "./App.css";
 import Wrapper from "./components/Wrapper";
 import { useState } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
 //Profiles
 const App = () => {
@@ -36,10 +38,18 @@ const App = () => {
     },
   ];
 
-  //If button is clicked
-  const [clicked, setclicked] = useState(false);
-  const handleClick = () => {
-    setClicked(!clicked);
+  //Variable to store the animation state
+  const [animation, setAnimation] = useState(false);
+  //Function to update the animation state
+  const handleAnimation = () => {
+    setAnimation(false);
+  };
+
+  //Variable to store the mode state
+  const [mode, setMode] = useState("light");
+  //Function to update the mode state
+  const handleModeChange = () => {
+    setMode(mode === "light" ? "dark" : "light");
   };
 
   //Get titles
@@ -47,7 +57,6 @@ const App = () => {
 
   //Make "All" default filter
   const [title, setTitle] = useState("");
-
   //Update the title on change of the dropdown menu
   const handleTitleChange = (event) => {
     setTitle(event.target.value);
@@ -56,7 +65,6 @@ const App = () => {
 
   //Make empty default search
   const [search, setSearch] = useState("");
-
   //Update results during search
   const handleSearchChange = (event) => {
     setSearch(event.target.value);
@@ -69,24 +77,31 @@ const App = () => {
   };
 
   //Filter profiles by title
-  const filterProfiles = profiles.filter((profile) =>
+  const filterProfiles = profiles.filter(
+    (profile) =>
   (title === "" || profile.title === title) &&
     profile.name.toLowerCase().includes(search.toLowerCase())
   );
 
+  const buttonStyle = {
+    border: "1px solid #ccc",
+  };
+
 
   return (
     <>
-      <header><Navbar/></header>
+      <header>
+        <Navbar mode={mode} updateMode={handleModeChange}/>
+      </header>
 
-      <main>
-       <Wrapper><h1>Profile App</h1>
-       <button onClick={handleClick}>
-        {clicked ? "Click Me" : "Clicked"}
-       </button>
+      <main className={mode === "light" ? "light" : "dark"}>
+       <Wrapper>
+        <h1>Profile App</h1>
        </Wrapper>
 
-      <Wrapper><About/></Wrapper>
+      <Wrapper>
+        <About/>
+      </Wrapper>
 
       <Wrapper>
         <div className="filter-wrapper">
@@ -104,17 +119,18 @@ const App = () => {
                 <input type="text" id="search" onChange={handleSearchChange} value={search}/>
                 </div>
                 
-                <button onClick={handleClear}>Clear</button>
+                <button onClick={handleClear} style={buttonStyle}>
+                  <span className="sr-only">Reset</span>
+                  <FontAwesomeIcon icon={faXmark} />
+                </button>
 
-        </div>
-      </Wrapper>
-
-      <Wrapper>
             <div className="profile-cards">
               {filterProfiles.map((profile) => (
-                <Card key={profile.email} {...profile} />
+                <Card key={profile.email} {...profile} animate={animation} updateAnimate={handleAnimation} />
                 ))}
               </div>
+
+        </div>
       </Wrapper>
 
       </main>

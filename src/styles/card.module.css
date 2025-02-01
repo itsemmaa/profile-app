@@ -1,3 +1,16 @@
+/* Define animation keyframes */
+
+@keyframes cardEnter {
+    0% {
+        opacity: 0;
+        transform: scale (0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
 .profile-card {
     background-color: var(--primary-background-color);
     border-radius: var(--border-radius);
@@ -7,6 +20,11 @@
     box-shadow: var(--box-shadow);
     height: 100%;
     margin: 0.75rem;
+    &.is-entering {
+        opacity: 0;
+        transform: scale(0.9);
+        animation: cardEnter 0.5s forwards; /* Apply the animation */
+    }
 }
 
 .profile-card_img {
@@ -27,11 +45,9 @@ img {
     object-fit: cover;
 }
 
-h3 {
-    margin: 0.5rem 0;
-}
-
-p {
-    margin: 0;
-    color: var(--text-color);
+.profile-card_content {
+    p {
+        margin: 0;
+        color: var(--text-color);
+    }
 }

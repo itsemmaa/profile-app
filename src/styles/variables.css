@@ -5,10 +5,12 @@ body {
     --primary-background-color: #e8e2da;
     --secondary-background-color: #455763;
     --third-background-color: #d3dadc;
+    --dark-background-color: #191a1a;
     --text-color: #455763;
+    --dark-text-color: #ffffff;
     --button-background-color: #d6c9b4;
     --button-text-color: #ffffff;
-    --button-hover-background-color: #e8e2da;
+    --button-hover-background-color: var(--primary-background-color);
     --button-hover-text-color: #191a1a;
     --link-color: #455763;
     --link-hover-color: var(--text-color);

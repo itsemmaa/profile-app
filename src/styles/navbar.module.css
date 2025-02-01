@@ -2,13 +2,8 @@
     background-color: var(--secondary-background-color);
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
     align-items: center;
-    padding: 1rem;
-    &.section {
-        padding-top: 1rem;
-        padding-bottom: 1rem;
-    }
+    padding: 1rem 4rem;
     ul {
         display: flex;
         align-items: center;
@@ -16,6 +11,7 @@
         padding-left: 0;
         li {
             margin-right: 1rem;
+            margin-bottom: 0;
             a {
                 color: var(--button-text-color);
             }
@@ -23,5 +19,20 @@
                 color: var(--link-hover-color);
             }
         }
+    }
+    button {
+        margin-bottom: 0;
+    }
+}
+
+@media screen and (max-width: var(--tablet)) {
+    .navbar {
+        padding: 1rem 1.5rem;
+    }
+}
+
+@media screen and (max-width: var(--mobile)) {
+    .navbar {
+        padding: 1rem;
     }
 }
