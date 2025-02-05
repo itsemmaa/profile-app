@@ -2,18 +2,18 @@
 
 body {
     /* Color Scheme */
-    --primary-background-color: #e8e2da;
-    --secondary-background-color: #455763;
-    --third-background-color: #d3dadc;
-    --dark-background-color: #191a1a;
-    --text-color: #455763;
-    --dark-text-color: #ffffff;
-    --button-background-color: #d6c9b4;
-    --button-text-color: #ffffff;
-    --button-hover-background-color: var(--primary-background-color);
-    --button-hover-text-color: #191a1a;
-    --link-color: #455763;
-    --link-hover-color: var(--text-color);
+    --primary-background-color: #e8e2da; /* Sand */
+    --secondary-background-color: #455763; /* Navy */
+    --third-background-color: #d3dadc; /* Spring Water */
+    --dark-background-color: #878d8e; /* Dark Spring Water */
+    --text-color: #455763; /* Navy */
+    --dark-text-color: #e8e2da; /* Sand */
+    --button-background-color: #d6c9b4; /* Wood */
+    --button-text-color: #e8e2da; /* Sand */
+    --button-hover-background-color: var(--third-background-color); /* Sand */
+    --button-hover-text-color: #d3dadc; /* Sand */
+    --link-color: #ffffff; /* Sand */
+    --link-hover-color: #d3dadc; /* Spring Water */
 
     /* Font */
     --font-family: 'Roboto', sans-serif;

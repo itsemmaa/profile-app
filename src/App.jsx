@@ -8,6 +8,7 @@ import Wrapper from "./components/Wrapper";
 import { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import ProfileForm from "./components/ProfileForm";
 
 //Profiles
 const App = () => {
@@ -99,8 +100,12 @@ const App = () => {
         <h1>Profile App</h1>
        </Wrapper>
 
-      <Wrapper>
+       <Wrapper>
         <About/>
+       </Wrapper>
+
+      <Wrapper>
+        <ProfileForm/>
       </Wrapper>
 
       <Wrapper>

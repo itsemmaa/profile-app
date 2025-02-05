@@ -136,6 +136,7 @@ button {
 select, input {
     padding: 0.5rem;
     font-size: 1rem;
+    background-color: #878d8e; /* Dark Spring Water */
 }
 
 /* Tablet Styles */
