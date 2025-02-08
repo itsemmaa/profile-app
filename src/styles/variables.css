@@ -5,15 +5,18 @@ body {
     --primary-background-color: #e8e2da; /* Sand */
     --secondary-background-color: #455763; /* Navy */
     --third-background-color: #d3dadc; /* Spring Water */
-    --dark-background-color: #878d8e; /* Dark Spring Water */
     --text-color: #455763; /* Navy */
-    --dark-text-color: #e8e2da; /* Sand */
     --button-background-color: #d6c9b4; /* Wood */
     --button-text-color: #e8e2da; /* Sand */
-    --button-hover-background-color: var(--third-background-color); /* Sand */
+    --button-hover-background-color: var(--secondary-background-color); /* Sand */
     --button-hover-text-color: #d3dadc; /* Sand */
-    --link-color: #ffffff; /* Sand */
-    --link-hover-color: #d3dadc; /* Spring Water */
+    --button-border-color: #d6c9b4;
+    --link-color: #455763; /* Sand */
+    --link-hover-color: #a3bac1; /* Spring Water */
+   
+    /* Dark Mode */
+    --dark-background-color: #878d8e; /* Dark Spring Water */
+    --dark-text-color: #e8e2da; /* Sand */
 
     /* Font */
     --font-family: 'Roboto', sans-serif;
@@ -23,9 +26,11 @@ body {
     --tablet: 1024px;
 
     /* Border */
-    --border-radius: 8px;
+    --border-radius: 13px;
     --border-color: #e0e0e0;
 
     /* Shadow */
     --box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    --success-color: #2ecc71;
+    --error-color: #e74c3c;
 }
