@@ -64,14 +64,14 @@ const ProfileForm = () => {
             <textarea name="bio" placeholder="Description" value={data.bio} onChange={handleChange} maxLength={200} required></textarea>
             <p>{data.bio.length}/200</p>
             <label htmlFor="image">Choose a profile image:</label>
-                <input type="file" id="image" name="image" accept="image/jpg, image/png, image/jpeg, image/gif" onChange={handleChange}></input>
+                <input type="file" id="image" name="image" accept="image/jpg, image/png, image/jpeg, image/gif" onChange={handleChange}/>
                 {errors.image && <p className={style['error']}>{errors.image}</p>}
-            <button type="submit" disabled={submitting || errors.image !=="" || data.name ==="" || data.bio ==="" || data.email ==="" || data.title ==="" || data.imag !==null ? true : false}>Submit</button>
+            <button type="submit" disabled={submitting || errors.image !=="" || data.name.trim() ==="" || data.email.trim() ==="" || data.bio.trim() || data.title.trim() ==="" || data.image === null ? true : false}>Submit</button>
                 {errors.general && <p className={style['error']}>{errors.general}</p>}
                 {successMessage && <p className={style['success']}>{successMessage}</p>}
         </form>
     );
-}
+};
 
 
 export default ProfileForm;

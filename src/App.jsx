@@ -9,10 +9,12 @@ import { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import ProfileForm from "./components/ProfileForm";
+import { useEffect } from "react";
+import { use } from "react";
 
 //Profiles
 const App = () => {
-  const profiles =[
+  /*const profiles =[
     {
       img: image_man,
       name: 'John Doe',
@@ -37,9 +39,19 @@ const App = () => {
       title: 'Sales',
       email: 'jill@email.com'
     },
-  ];
+  ]; */
 
   //Variable to store the animation state
+  const [profiles, setProfiles] = useState([]);
+  useEffect(() => {
+    fetch("https://web.ics.purdue.edu/~barnetem/profile-app/fetch-data.php")
+    .then((res) => res.json())
+    .then((data) => {
+      setProfiles(data);
+      console.log(data)
+    })
+  }, []);
+
   const [animation, setAnimation] = useState(false);
   //Function to update the animation state
   const handleAnimation = () => {
@@ -54,27 +66,27 @@ const App = () => {
   };
 
   //Get titles
-  const titles = [...new Set(profiles.map((profile) => profile.title))];
+ const titles = [...new Set(profiles.map((profile) => profile.title))];
 
-  //Make "All" default filter
   const [title, setTitle] = useState("");
   //Update the title on change of the dropdown menu
   const handleTitleChange = (event) => {
     setTitle(event.target.value);
-    console.log(event.target.value);
+    setAnimation(true);
   };
 
-  //Make empty default search
   const [search, setSearch] = useState("");
   //Update results during search
   const handleSearchChange = (event) => {
     setSearch(event.target.value);
+    setAnimation(true);
   };
 
   //Clear title and search
   const handleClear = () => {
     setTitle("");
     setSearch("");
+    setAnimation(true);
   };
 
   //Filter profiles by title
@@ -131,11 +143,11 @@ const App = () => {
 
             <div className="profile-cards">
               {filterProfiles.map((profile) => (
-                <Card key={profile.email} {...profile} animate={animation} updateAnimate={handleAnimation} />
+                <Card key={profile.id} {...profile} animate={animation} updateAnimate={handleAnimation} />
                 ))}
               </div>
 
-        </div>
+              </div>
       </Wrapper>
 
       </main>
