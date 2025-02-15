@@ -18,7 +18,6 @@
     text-align: center;
     width: 200px;
     box-shadow: var(--box-shadow);
-    height: 100%;
     margin: 0.75rem;
     &.is-entering {
         opacity: 0;
@@ -27,7 +26,7 @@
     }
 }
 
-.profile-card_img {
+.profile-card_image {
     width: 100%;
     padding-top: 100%;
     border-radius: 50%;

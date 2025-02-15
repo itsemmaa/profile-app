@@ -21,6 +21,7 @@
         &:disabled {
             background-color: var(--button-hover-background-color);
             color: var(--button-hover-text-color);
+            cursor: not-allowed;
         }
     }
     input[type="text"], input[type="email"], input[type="password"], textarea {
@@ -52,6 +53,13 @@
     
     .error {
         color: var(--error-color);
+        font-size: 14px;
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    .success {
+        color: var(--success-color);
         font-size: 14px;
         margin-top: 10px;
         text-align: center;
