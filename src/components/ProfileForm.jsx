@@ -1,8 +1,22 @@
-import {useState} from "react";
+import { useState, useEffect } from "react";
 import style from '../styles/ProfileForm.module.css';
+import { useNavigate } from "react-router-dom";
 
-const ProfileForm = () => {
+const ProfileForm = ({ isEdit = false, currentProfile = {} }) => {
+    const navigate = useNavigate();
     const [data, setData] = useState({name: "", title: "", email: "", bio: "", image: null});
+    useEffect(() => {
+        if (isEdit) {
+            setData({
+                name: currentProfile.name || "",
+                title: currentProfile.title || "",
+                email: currentProfile.email || "",
+                bio: currentProfile.bio || "",
+                image: null,
+            });
+        }
+    }, [currentProfile, isEdit]);
+
     const [errors, setErrors] = useState({ image: "", general: ""});
     const [submitting, setSubmitting] = useState(false);
     const [successMessage, setSuccessMessage] = useState("");
@@ -26,6 +40,7 @@ const ProfileForm = () => {
         e.preventDefault();
         setSubmitting(true);
         const formData = new FormData();
+        formData.append("id", currentProfile.id || "");
         formData.append("name", data.name.trim());
         formData.append("email", data.name.trim());
         formData.append("title", data.name.trim());
@@ -45,6 +60,7 @@ const ProfileForm = () => {
                 setTimeout(() => {
                     setSuccessMessage("");
                 }, 1000);
+                isEdit && navigate(-1);
             } else {
                 setErrors({image: "", general: result.message});
                 setSuccessMessage("");
@@ -66,7 +82,7 @@ const ProfileForm = () => {
             <label htmlFor="image">Choose a profile image:</label>
                 <input type="file" id="image" name="image" accept="image/jpg, image/png, image/jpeg, image/gif" onChange={handleChange}/>
                 {errors.image && <p className={style['error']}>{errors.image}</p>}
-            <button type="submit" disabled={submitting || errors.image !=="" || data.name.trim() ==="" || data.email.trim() ==="" || data.bio.trim() || data.title.trim() ==="" || data.image === null ? true : false}>Submit</button>
+            <button type="submit" disabled={submitting || errors.image !=="" || data.name.trim() ==="" || data.email.trim() ==="" || data.bio.trim() ==="" || data.title.trim() ==="" || data.image === null}>Submit</button>
                 {errors.general && <p className={style['error']}>{errors.general}</p>}
                 {successMessage && <p className={style['success']}>{successMessage}</p>}
         </form>

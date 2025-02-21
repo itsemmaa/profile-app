@@ -2,9 +2,10 @@ import Card from "./components/Card";
 import Wrapper from "./components/Wrapper";
 import { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faXmark, faChevronLeft, faChervonRight } from '@fortawesome/free-solid-svg-icons';
+import { faXmark, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { useEffect } from "react";
 import styles from "../styles/home.module.css";
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
   const [titles, setTitles] = useState([]);
@@ -90,9 +91,11 @@ const HomePage = () => {
                 </button>
                 </div>
 
-            <div className="profile-cards">
+            <div className={styles["profile-cards"]}>
               {profiles.map((profile) => (
+                <Link to={`/profile/${profile.id}`} key={profile.id}>
                 <Card key={profile.id} {...profile}/>
+                </Link>
                 ))}
               </div>
               { count === 0 && <p>No profiles found!</p> }
