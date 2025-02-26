@@ -2,7 +2,7 @@
 
 body {
     font-family: var(--font-family);
-    background-color: var(--third-background-color);
+    background-color: var(--primary-background-color);
     color: var(--text-color);
     font-size: 1rem;
     margin: 0;
@@ -16,7 +16,11 @@ main {
         background-color: var(--dark-background-color);
         color: var(--dark-text-color);
         h1, h2, h3, h4, h5, h6, p {
-            color: var (--dark-text-color);
+            color: var(--dark-text-color);
+        }
+        button {
+            background-color: var(--dark-button-background-color);
+            color: var(--dark-text-color);
         }
     }
 }

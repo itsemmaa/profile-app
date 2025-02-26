@@ -25,6 +25,7 @@ button:hover {
     justify-content: flex-start;
     align-items: center;
     margin-bottom: 1.5rem;
+    margin-top: 7rem;
 }
 .filter--search, .filter--select, button {
     margin-right: 0.5rem;
@@ -33,6 +34,9 @@ button:hover {
 select, input {
     padding: 0.5rem;
     font-size: 1rem;
+    background-color: var(--secondary-background-color);
+    border-color: #DBDBDB;
+    color: var(--text-color);
 }
 
 /* Pagination */

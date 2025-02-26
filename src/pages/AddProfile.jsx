@@ -1,6 +1,6 @@
-import "./App.css";
-import Wrapper from "./components/Wrapper";
-import ProfileForm from "./components/ProfileForm";
+import "../App.css";
+import Wrapper from "../components/Wrapper";
+import ProfileForm from "../components/ProfileForm";
 
 
 const AddProfile = () => {

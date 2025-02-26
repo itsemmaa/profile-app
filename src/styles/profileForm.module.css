@@ -13,7 +13,7 @@
         padding: 0.5rem;
         font-size: 1rem;
         margin: 0.5rem 0;
-        background-color: var(--third-background-color);
+        background-color: #DBDBDB;
     }
     button {
         align-self: flex-start;
@@ -31,6 +31,7 @@
         border: 1px solid var(--border-color);
         border-radius: var(--border-radius);
         font-size: 16px;
+        color: var(--text-color);
     }
 
     input[type="file"] {

@@ -2,21 +2,22 @@
 
 body {
     /* Color Scheme */
-    --primary-background-color: #e8e2da; /* Sand */
-    --secondary-background-color: #455763; /* Navy */
-    --third-background-color: #d3dadc; /* Spring Water */
-    --text-color: #455763; /* Navy */
-    --button-background-color: #d6c9b4; /* Wood */
-    --button-text-color: #e8e2da; /* Sand */
-    --button-hover-background-color: var(--secondary-background-color); /* Sand */
-    --button-hover-text-color: #d3dadc; /* Sand */
-    --button-border-color: #d6c9b4;
-    --link-color: #455763; /* Sand */
-    --link-hover-color: #a3bac1; /* Spring Water */
+    --primary-background-color: #EBE9E3;
+    --secondary-background-color: #F5F5F5;
+    --third-background-color: #092E4C;
+    --text-color: #092E4C;
+    --button-background-color: #092E4C;
+    --button-text-color: #F5F5F5;
+    --button-hover-background-color: #8596B4;
+    --button-hover-text-color: #FFFFFF;
+    --button-border-color: #092E4C;
+    --link-color: #092E4C;
+    --link-hover-color: #8596B4; /* Spring Water */
    
     /* Dark Mode */
-    --dark-background-color: #878d8e; /* Dark Spring Water */
-    --dark-text-color: #e8e2da; /* Sand */
+    --dark-background-color: #092E4C;
+    --dark-text-color: #F5F5F5; /* Sand */
+    --dark-button-background-color: #F5F5F5;
 
     /* Font */
     --font-family: 'Roboto', sans-serif;

@@ -1,5 +1,5 @@
-import Card from "./components/Card";
-import Wrapper from "./components/Wrapper";
+import Card from "../components/Card";
+import Wrapper from "../components/Wrapper";
 import { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
@@ -41,7 +41,7 @@ const HomePage = () => {
     fetch(`https://web.ics.purdue.edu/~barnetem/profile-app/fetch-data-with-filter.php?title=${title}&name=${search}&page=${page}&limit=10`)
     .then((res) => res.json())
     .then((data) => {
-      setProfiles(data,profiles);
+      setProfiles(data.profiles);
       setCount(data.count);
       setPage(data.page);
     });

@@ -33,6 +33,7 @@ const ProfileForm = ({ isEdit = false, currentProfile = {} }) => {
         console.log(data.image);
     } else {
         setData({...data, [e.target.name]: e.target.value});
+        console.log(e.target.value);
     }
     };
 
@@ -42,9 +43,9 @@ const ProfileForm = ({ isEdit = false, currentProfile = {} }) => {
         const formData = new FormData();
         formData.append("id", currentProfile.id || "");
         formData.append("name", data.name.trim());
-        formData.append("email", data.name.trim());
-        formData.append("title", data.name.trim());
-        formData.append("bio", data.name.trim());
+        formData.append("email", data.email.trim());
+        formData.append("title", data.title.trim());
+        formData.append("bio", data.bio.trim());
         if (data.image) formData.append("image", data.image);
         console.log(data.image+"test");
         try {
