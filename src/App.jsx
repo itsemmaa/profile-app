@@ -1,6 +1,5 @@
 import "./App.css";
 import Navbar from "./components/Navbar";
-import { useState, useEffect } from "react";
 import { HashRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import AddProfile from "./pages/AddProfile";
@@ -9,14 +8,19 @@ import NotFound from "./pages/NotFound";
 import ProfileDetailPage from "./pages/ProfileDetailPage";
 import ProfileEditPage from "./pages/ProfileEditPage";
 import ProfileIndexPage from "./pages/ProfileIndexPage";
-import { ModeContext } from "./contexts/ModeContext";
+import ModeContext from "./contexts/ModeContext";
 import { useContext } from "react";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
+import { AuthProvider } from "./contexts/AuthContext";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const App = () => {
 
  const { mode } = useContext(ModeContext);
 
   return (
+    <AuthProvider>
     <HashRouter>
       <header>
         <Navbar/>
@@ -25,16 +29,23 @@ const App = () => {
       <main className={mode === "light" ? "light" : "dark"}>
         <Routes>
           <Route path="/" element={<HomePage/>}/>
-          <Route path="/add-profile" element={<AddProfile/>}/>
           <Route path="/about" element={<AboutPage/>}/>
+          <Route path="/add-profile" element={
+            <ProtectedRoute>
+            <AddProfile/>
+            </ProtectedRoute>
+          }/>
           <Route path="profile/:id" element={<ProfileIndexPage/>}>
             <Route index element={<ProfileDetailPage/>}/>
-            <Route path="edit" element={<ProfileEditPage/>}/>
+            <Route path="edit" element={<ProtectedRoute><ProfileEditPage/></ProtectedRoute>}/>
           </Route>
+          <Route path="/login" element={<LoginPage/>}/>
+          <Route path="/register" element={<RegisterPage/>}/>
           <Route path="*" element={<NotFound/>}/>
         </Routes>
       </main>
       </HashRouter>
+      </AuthProvider>
   );
 
 };
