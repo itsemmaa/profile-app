@@ -3,37 +3,34 @@ import Wrapper from "../components/Wrapper";
 import { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
-import { useEffect } from "react";
+import { useEffect, useReducer } from "react";
 import styles from "../styles/home.module.css";
 import { Link } from "react-router-dom";
+import { initialState, homeReducer } from "../reducers/homeReducer";
 
 const HomePage = () => {
-  const [titles, setTitles] = useState([]);
-  const [title, setTitle] = useState("");
-  const [search, setSearch] = useState("");
-  const [profiles, setProfiles] = useState([]);
-  const [page, setPage] = useState(1);
-  const [count, setCount] = useState(1);
+ 
+  const [state, dispatch] = useReducer(homeReducer, initialState);
+  const { titles, title, search, profiles, page, count } = state;
 
   //Get titles
  useEffect(() => {
   fetch("https://web.ics.purdue.edu/~barnetem/profile-app/get-titles.php")
   .then((res) => res.json())
   .then((data) => {
-    setTitles(data.titles)
+   // setTitles(data.titles)
+   dispatch({ type: "SET_TITLES", payload: data.titles });
   });
  }, []);
 
   //Update the title on change of the dropdown menu
   const handleTitleChange = (event) => {
-    setTitle(event.target.value);
-    setPage(1);
+   dispatch({ type: "SET_TITLE", payload: event.target.value });
   };
 
   //Update results during search
   const handleSearchChange = (event) => {
-    setSearch(event.target.value);
-    setPage(1);
+  dispatch({ type: "SET_SEARCH", payload: event.target.value });
   };
 
   //fetch the data from the server
@@ -41,17 +38,13 @@ const HomePage = () => {
     fetch(`https://web.ics.purdue.edu/~barnetem/profile-app/fetch-data-with-filter.php?title=${title}&name=${search}&page=${page}&limit=10`)
     .then((res) => res.json())
     .then((data) => {
-      setProfiles(data.profiles);
-      setCount(data.count);
-      setPage(data.page);
+    dispatch({ type: "FETCH_DATA", payload: data });
     });
   }, [title,search, page]);
 
   //Clear title and search
   const handleClear = () => {
-    setTitle("");
-    setSearch("");
-    setPage(1);
+  dispatch({ type: "CLEAR_FILTER" });
   };
 
   const buttonStyle = {
@@ -94,19 +87,19 @@ const HomePage = () => {
             <div className={styles["profile-cards"]}>
               {profiles.map((profile) => (
                 <Link to={`/profile/${profile.id}`} key={profile.id}>
-                <Card key={profile.id} {...profile}/>
+                <Card {...profile}/>
                 </Link>
                 ))}
               </div>
               { count === 0 && <p>No profiles found!</p> }
               {count > 10 && (
               <div className={styles["pagination"]}>
-                <button onClick={() => setPage(page - 1)} disabled={page === 1}>
+                <button onClick={() => dispatch({ type: "SET_PAGE", payload: page - 1 })} disabled={page === 1}>
                   <span className="sr-only">Previous</span>
                   <FontAwesomeIcon icon={faChevronLeft}/>
                 </button>
                 <span>{page}/{Math.ceil(count/10)}</span>
-                <button onClick={() => setPage(page + 1)} disabled={page >= Math.ceil(count/10)}>
+                <button onClick={() => dispatch({ type: "SET_PAGE", payload: page + 1 })} disabled={page >= Math.ceil(count/10)}>
                   <span className="sr-only">Next</span>
                   <FontAwesomeIcon icon={faChevronRight}/>
                 </button>
