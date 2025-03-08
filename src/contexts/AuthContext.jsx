@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, useState, useContext } from 'react';
 
 const AuthContext = createContext();
 
@@ -32,3 +32,5 @@ const AuthContext = createContext();
 };
 
 export default AuthContext;
+
+export const useAuth = () => useContext(AuthContext);
