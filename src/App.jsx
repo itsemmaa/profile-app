@@ -16,10 +16,12 @@ import { AuthProvider } from "./contexts/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { useMode } from "./contexts/ModeContext";
 import { lazy, Suspense } from "react";
+import { useSelector } from "react-redux";
 
 const App = () => {
 
- const { mode } = useMode();
+ const mode = useSelector((state) => state.mode.mode);
+ 
  const LazyComponent = lazy(() => import("./pages/ProfileDetailPage"));
 
   return (
