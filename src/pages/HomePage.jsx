@@ -1,11 +1,12 @@
 import Card from "../components/Card";
 import Wrapper from "../components/Wrapper";
-import { useState } from "react";
+import { useCallback, useMemo } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faXmark, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import styles from "../styles/home.module.css";
 import { Link } from "react-router-dom";
 import useHomePageAPI from "../hooks/homePageAPI";
+import Filters from "../components/Filters";
 
 const HomePage = () => {
  
@@ -13,56 +14,35 @@ const HomePage = () => {
   const { titles, title, search, profiles, page, count } = state;
 
   //Update the title on change of the dropdown menu
-  const handleTitleChange = (event) => {
+  const handleTitleChange = useCallback((event) => {
    dispatch({ type: "SET_TITLE", payload: event.target.value });
-  };
+  }, []);
 
   //Update results during search
-  const handleSearchChange = (event) => {
+  const handleSearchChange = useCallback((event) => {
   dispatch({ type: "SET_SEARCH", payload: event.target.value });
-  };
+  }, []);
 
   //Clear title and search
-  const handleClear = () => {
+  const handleClear = useCallback(() => {
   dispatch({ type: "CLEAR_FILTER" });
-  };
+  }, []);
 
-  const buttonStyle = {
-    border: "1px solid #ccc",
-  };
-
+  const titlesValue = useMemo(() => titles, [titles]);
 
   return (
       <Wrapper>
         <h1>Profile App</h1>
-        <div className={styles["filter-wrapper"]}>
-          <div className={styles["filter--select"]}>
-            <label htmlFor="title-select">Select a title: </label>
-              <select id="title-select" onChange={handleTitleChange} value={title}>
-                <option value="">All</option>
-                {titles.map((title) => (
-                  <option key={title} value={title}>
-                    {title}
-                    </option>
-                  ))}
-              </select>
-          </div>
 
-          <div className={styles["filter-search"]}>
-            <label htmlFor="search">Search by name: </label>
-                <input 
-                type="text" 
-                id="search" 
-                onChange={handleSearchChange} 
-                value={search}
-                />
-                </div>
-                
-                <button onClick={handleClear} style={buttonStyle}>
-                  <span className="sr-only">Reset</span>
-                  <FontAwesomeIcon icon={faXmark} />
-                </button>
-                </div>
+        <Filters 
+          titles={titlesValue} 
+          title={title} 
+          search={search} 
+          handleTitleChange={handleTitleChange} 
+          handleSearchChange={handleSearchChange} 
+          handleClear={handleClear}
+        />
+      
 
             <div className={styles["profile-cards"]}>
               {profiles.map((profile) => (

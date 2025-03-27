@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, memo, useRef } from "react";
 import style from '../styles/ProfileForm.module.css';
 import { useNavigate } from "react-router-dom";
 
 const ProfileForm = ({ isEdit = false, currentProfile = {} }) => {
+    
     const navigate = useNavigate();
     const [data, setData] = useState({name: "", title: "", email: "", bio: "", image: null});
     useEffect(() => {

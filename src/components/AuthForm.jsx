@@ -1,15 +1,14 @@
-import { useState, useEffect, useContext, useRef, useLayoutEffect } from "react";
+import { useState, useEffect, useContext, useRef } from "react";
 import style from "../styles/ProfileForm.module.css";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../contexts/AuthContext";
-import { use } from "react";
-import useAuthForm from "..hooks/authFormHook";
+import useAuthForm from "../hooks/authFormHook";
 
 const AuthForm = ({ isRegister = false }) => {
 
     const { data, error, submitting, successMessage, handleChange, handleSubmit } = useAuthForm(isRegister);
-    const nameRef = useRef(null);
-    
+
+    const usernameRef = useRef(null);
     useEffect(() => {
         usernameRef.current.focus();
     }, []);

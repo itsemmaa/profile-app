@@ -65,6 +65,10 @@
         margin-top: 10px;
         text-align: center;
     }
+
+    p.profile-text, label, input {
+        color: var(--text-color);
+    }
 }
 
 @media screen and (max-width: var(--mobile)) {
