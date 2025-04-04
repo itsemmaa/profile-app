@@ -65,6 +65,9 @@ const HomePage = () => {
                 </button>
               </div>
               )}
+      <div className="chatbotButton">
+        <Link to="/chatbot"><button>Chatbot</button></Link>
+      </div>
 
       </Wrapper>
   );

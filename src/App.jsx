@@ -17,6 +17,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import { useMode } from "./contexts/ModeContext";
 import { lazy, Suspense } from "react";
 import { useSelector } from "react-redux";
+import Chatbot from "./components/Chatbot";
 
 const App = () => {
 
@@ -32,6 +33,7 @@ const App = () => {
       </header>
 
       <main className={mode === "light" ? "light" : "dark"}>
+
         <Routes>
           <Route path="/" element={<HomePage/>}/>
           <Route path="/about" element={<AboutPage/>}/>
@@ -46,6 +48,7 @@ const App = () => {
           </Route>
           <Route path="/login" element={<LoginPage/>}/>
           <Route path="/register" element={<RegisterPage/>}/>
+          <Route path="/chatbot" element={<Chatbot/>}/>
           <Route path="*" element={<NotFound/>}/>
         </Routes>
       </main>

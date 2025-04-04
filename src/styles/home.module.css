@@ -28,15 +28,21 @@ button:hover {
     margin-top: 7rem;
 }
 .filter--search, .filter--select, button {
-    margin-right: 0.5rem;
+    margin-right: 1rem;
     margin-bottom: 0.5rem;
 }
 select, input {
-    padding: 0.5rem;
-    font-size: 1rem;
+    padding: 0.3rem;
+    font-size: 0.85rem;
     background-color: var(--secondary-background-color);
     border-color: #DBDBDB;
     color: var(--text-color);
+}
+
+.chatbotButton {
+    width: 100%;
+    padding-top: 2rem;
+    position: static;
 }
 
 /* Pagination */

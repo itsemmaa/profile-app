@@ -1,0 +1,31 @@
+{
+    "greetings": {
+        "queries": ["hello", "hi", "hey", "howdy"],
+        "response": "Hello! How can I assist you today?"
+    },
+    "how_are_you": {
+        "queries": ["how_are_you", "how's_it_going", "hows it going", "how_are_you_doing"],
+        "response": "I'm doing great, thank you for asking!"
+    },
+    "who_are_you": {
+        "queries": ["who_are_you", "what_is_your_name", "whats_your_name", "what's_your_name"],
+        "response": "My name is Chatbot! I was built by Emma for your convenience."
+    },
+    "year": {
+        "queries": ["what_year_is_it", "what_is_the_year"],
+        "response": "The year is currently 2025."
+    },
+    "joke": {
+        "queries": ["tell_me_a_joke"],
+        "response": "Why did the golfer bring two pairs of pants?"
+    },
+    "why": {
+        "queries": ["why", "why?"],
+        "response": "Cause he got a hole in one!"
+    },
+    "goodbye": {
+        "queries": ["goodbye", "bye", "adios", "see_you_later", "peace"],
+        "response": "Goodbye! It was nice chatting with you."
+    },
+    "default": "Sorry, I didn't quite catch that. Can you please rephrase?"
+}
